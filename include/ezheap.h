@@ -31,7 +31,7 @@ ezheap_t __ezheap_instance;
 #endif
 
 #define new(x) __ezheap_malloc_errsafe(sizeof(x), &__ezheap_instance)
-#define new_str(x) __ezheap_malloc_str_errsafe(sizeof(x), x, &__ezheap_instance);
+#define new_str(x) __ezheap_malloc_str_errsafe(sizeof(x), x, &__ezheap_instance)
 #define ezheap_destruct() __ezheap_cleanup(&__ezheap_instance)
 
 #ifdef EZHEAP_DBG
