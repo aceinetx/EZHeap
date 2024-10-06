@@ -44,6 +44,17 @@ int main()
   ezheap_destruct();
 }
 ```
+## Notice
+Do not use malloc() if you want to use ezheap, ezheap will not be able to free it
+Do not use free() on ezheap allocated variable, this will result in a double free when ezheap_destruct() is called
+## Macros
+- ```ezheap_init()```: initalizes ezheap
+- ```new(x)```: basically ```malloc(N)```, but expands to ```malloc(sizeof(N))```
+- ```new_str(x)```: basically ```new```, but copies ```x``` to a newly allocated variable
+- ```ezheap_destruct()```: destructs ezheap and free's all heap allocated variables (that are created using ```new``` or ```new_str```)
+- ```__ezheap_stdmalloc(x, y)```: basically ```malloc(x)```, but increments ```y->allocs```, needed for debug info
+- ```__ezheap_stdfree(x, y)```: basically ```free(x)```, but increments ```y->free```, needed for debug info
+- ```ezheap_dbg_info()```: prints debug info (can only be called if EZHEAP_DBG is defined)
 ## Checking for memory leaks
 You can use valgrind, but if you have EZHEAP_DBG defined, you can use the ```ezheap_dbg_info()``` macro after ```ezheap_destruct()```, this will print all ```malloc()``` and ```free()``` usages
 ## Why
