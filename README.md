@@ -32,7 +32,7 @@ int main()
 {
   ezheap_init();
 
-  int *x = new (int);
+  int *x = new(int);
   *x = 123;
   printf("%d\n", *x);
 
