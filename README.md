@@ -10,7 +10,7 @@ This acts like a provider to ```malloc()```/```free()```
 void func()
 {
   // as ezheap is initalized, you can use it anywhere
-  int *y = new (int);
+  int *y = new(int);
   *y = 69;
   printf("%d\n", *y);
 }
@@ -25,7 +25,7 @@ void hello_world()
 void alloc_bytes()
 {
   // if you really need it, you can allocate raw bytes
-  void *bytes = new (char[5]); // acts the same as malloc(5)
+  void *bytes = new(char[5]); // acts the same as malloc(5)
 }
 
 int main()
