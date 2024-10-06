@@ -55,6 +55,14 @@ Do not use free() on ezheap allocated variable, this will result in a double fre
 - ```__ezheap_stdmalloc(x, y)```: basically ```malloc(x)```, but increments ```y->allocs```, needed for debug info
 - ```__ezheap_stdfree(x, y)```: basically ```free(x)```, but increments ```y->free```, needed for debug info
 - ```ezheap_dbg_info()```: prints debug info (can only be called if EZHEAP_DBG is defined)
+## Functions
+#### Public functions:
+- ```void *__ezheap_malloc_errsafe(size_t __size, ezheap_t *__ezheap)```: Allocate a variable that will be free'd when ```ezheap_destruct()``` is called. (Will ```abort()``` when ```malloc()``` fails)
+- ```void *__ezheap_malloc_str_errsafe(size_t __size, const char *__str, ezheap_t *__ezheap)```: Allocate a variable that will be free'd when ```ezheap_destruct()``` is called, and copy __str to it. . (Will ```abort()``` when ```malloc()``` fails)
+- ```void __ezheap_cleanup(ezheap_t *__ezheap)```: Cleanup ezheap and free all heap allocated variables
+- ```void __ezheap_debug_info(ezheap_t *__ezheap)```: Print debug info
+#### Private functions:
+- ```void *__ezheap_malloc(size_t __size, ezheap_t *__ezheap)```: Allocate a variable that will be free'd when ```ezheap_destruct()``` is called. Can return NULL
 ## Checking for memory leaks
 You can use valgrind, but if you have EZHEAP_DBG defined, you can use the ```ezheap_dbg_info()``` macro after ```ezheap_destruct()```, this will print all ```malloc()``` and ```free()``` usages
 ## Why
