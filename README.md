@@ -45,7 +45,7 @@ int main()
 }
 ```
 ## Notice
-Do not use malloc() if you want to use ezheap, ezheap will not be able to free it
+Do not use malloc() if you want to use ezheap, ezheap will not be able to free it<br>
 Do not use free() on ezheap allocated variable, this will result in a double free when ezheap_destruct() is called
 ## Macros
 - ```ezheap_init()```: initalizes ezheap
