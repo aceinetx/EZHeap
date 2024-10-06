@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.8)
 project(ezheap)
 
+# uncomment this to debug ezheap
+# add_compile_definitions("EZHEAP_DBG")
+
 include_directories("include")
 
 set(SOURCES_LIB "src/ezheap.c")
