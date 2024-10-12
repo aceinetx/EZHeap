@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <ezheap.h>
 
+ezheap_t __ezheap_instance = {0};
+
 void *__ezheap_malloc(size_t __size, ezheap_t *__ezheap)
 {
   void *heap_addr = __ezheap_stdmalloc(__size, __ezheap);
