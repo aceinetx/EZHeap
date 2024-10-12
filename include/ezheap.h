@@ -16,7 +16,7 @@ typedef struct ezheap_t
 } ezheap_t;
 
 #ifndef EZHEAP_IMPL
-ezheap_t __ezheap_instance;
+extern ezheap_t __ezheap_instance;
 #endif
 
 // we need to increment allocs & frees to make it match with valgrind
